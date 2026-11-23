@@ -1,0 +1,222 @@
+/**
+ * @name Dark Blue Moon
+ * @author st4lkingu on discord
+ * @version 1.0.0
+ * @description A dark charcoal and deep navy blue Discord theme with a custom translucent wallpaper layout.
+ * @source https://github.com/ohoas/Dark-Blue-Moon.git
+ */
+
+/* ==========================================================================
+   1. USER CUSTOMIZABLE SETTINGS (EDIT THESE VALUES)
+   ========================================================================== */
+:root,
+html.theme-dark,
+.theme-dark {
+  /* Replace with YOUR permanent image URL for a custom bg (e.g., from your GitHub repo or Catbox) */
+  --custom-wallpaper: url("https://raw.githubusercontent.com/ohoas/Dark-Blue-Moon/refs/heads/main/EurekaSevenStar.jpg");
+
+  /* Main Dark Blue Accent Colors */
+  --accent-primary: #1e3a5f;
+  --accent-hover: #2b507d;
+  --accent-active: #162c49;
+  --accent-light: #5b8bc4;
+  --mention-bg: rgba(30, 58, 95, 0.35);
+  --mention-text: #7aa7e0;
+
+  /* Panel Opacity & Shading */
+  --chat-bg: rgba(10, 10, 14, 0.55);
+  --input-bg: rgba(15, 15, 22, 0.65);
+
+  /* Transparent Base Surface Overrides */
+  --bg-overlay-app-frame: transparent !important;
+  --background-base-lowest: transparent !important;
+  --background-base-low: transparent !important;
+  --bg-base-tertiary: transparent !important;
+  --background-primary: transparent !important;
+  --background-secondary: transparent !important;
+
+  /* Discord & Theme Accent Variable Overrides */
+  --main-color: var(--accent-primary) !important;
+  --hover-color: var(--accent-hover) !important;
+  --brand-experiment: var(--accent-primary) !important;
+  --brand-experiment-15a: rgba(30, 58, 95, 0.25) !important;
+  --brand-experiment-30a: rgba(30, 58, 95, 0.45) !important;
+  --brand-400: var(--accent-hover) !important;
+  --brand-430: var(--accent-hover) !important;
+  --brand-460: var(--accent-primary) !important;
+  --brand-500: var(--accent-primary) !important;
+  --brand-530: var(--accent-primary) !important;
+  --brand-560: var(--accent-hover) !important;
+  --brand-600: var(--accent-active) !important;
+  --button-filled-brand-background: var(--accent-primary) !important;
+  --button-filled-brand-background-hover: var(--accent-hover) !important;
+  --button-filled-brand-background-active: var(--accent-active) !important;
+  --background-accent: var(--accent-primary) !important;
+  --bg-brand: var(--accent-primary) !important;
+  --text-link: var(--accent-light) !important;
+
+  /* Unread, Status & Mention Variables */
+  --unread-color: var(--accent-primary) !important;
+  --status-danger: var(--accent-primary) !important;
+  --mention-background: var(--mention-bg) !important;
+  --mention-foreground: var(--mention-text) !important;
+}
+
+/* ==========================================================================
+   2. WALLPAPER & TRANSPARENT BASE FRAMES
+   ========================================================================== */
+body {
+  background-image: var(--custom-wallpaper) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+[class^="bg_"],
+[class^="app_"],
+[class^="layers_"],
+[class^="base_"],
+[class*="app_"],
+[class*="base_"],
+[class*="content_"],
+[class*="container_"],
+[class*="sidebar_"],
+[class*="panels_"],
+[class*="standardSidebarView_"] {
+  background-color: transparent !important;
+}
+
+/* ==========================================================================
+   3. TRANSLUCENT DARK CHARCOAL PANES (CHAT, INPUT & RIGHT SIDEBAR)
+   ========================================================================== */
+[class^="chat_"],
+[class^="chatContent_"],
+[class^="messagesWrapper_"],
+[class^="nowPlayingColumn_"],
+[class^="container_"][class*="nowPlayingColumn"],
+[class^="membersWrap_"],
+[class^="members_"] {
+  background: transparent !important;
+  background-color: var(--chat-bg) !important;
+}
+
+/* Keep inner scrollers & member rows transparent so tint doesn't double up */
+[class^="chat_"] [class^="scroller_"],
+[class^="nowPlayingColumn_"] > [class^="container_"],
+[class^="nowPlayingColumn_"] [class^="scroller_"],
+[class^="members_"] > div {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+[class^="channelTextArea_"],
+[class^="scrollableContainer_"],
+[class^="itemCard_"] {
+  background-color: var(--input-bg) !important;
+}
+
+/* ==========================================================================
+   4. UNREAD INDICATORS, SLIDERS, BADGES & MENTIONS
+   ========================================================================== */
+[class^="barFill_"],
+[class*="unreadPill_"],
+[class^="newMessagesBar_"],
+[class*="textBadge_"],
+[class*="badge_"],
+[class*="botTagRegular_"],
+[class*="botTag_"] {
+  background-color: var(--accent-primary) !important;
+  color: #ffffff !important;
+}
+
+[class^="unread_"],
+[class^="pill_"] span {
+  background-color: var(--accent-hover) !important;
+}
+
+[class*="isUnread_"],
+[class*="embedFull_"] {
+  border-color: var(--accent-primary) !important;
+  border-left-color: var(--accent-primary) !important;
+}
+
+[class*="unreadPillCapStroke_"] {
+  color: var(--accent-primary) !important;
+  fill: var(--accent-primary) !important;
+}
+
+/* @mentions & selected emoji reactions */
+[class*="mention"] {
+  background-color: var(--mention-bg) !important;
+  color: var(--mention-text) !important;
+}
+
+[class*="mention"]:hover {
+  background-color: var(--accent-primary) !important;
+  color: #ffffff !important;
+}
+
+[class*="reactionMe_"] {
+  background-color: var(--mention-bg) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+[class*="reactionMe_"] [class*="reactionCount_"] {
+  color: var(--mention-text) !important;
+}
+
+/* ==========================================================================
+   5. TOGGLE SWITCHES, BUTTONS & EQUICORD SETTINGS CARDS
+   ========================================================================== */
+[class*="container_"][style*="background-color"] {
+  background-color: var(--accent-primary) !important;
+}
+
+[class*="container_"][style*="rgb(128, 132, 142)"],
+[class*="container_"][style*="rgb(114, 118, 125)"] {
+  background-color: #3a3d45 !important;
+}
+
+.vc-settings-card,
+[class*="card_"][style*="border"] {
+  border-color: var(--accent-primary) !important;
+  background-color: rgba(30, 58, 95, 0.15) !important;
+}
+
+.vc-settings-card svg,
+[class*="infoIcon_"],
+.vc-settings-card a,
+[class*="anchor_"] {
+  color: var(--accent-light) !important;
+  fill: var(--accent-light) !important;
+}
+
+.vc-btn-primary,
+button[style*="rgb(233, 84, 134)"],
+button[style*="rgb(255,"],
+button[class*="button_"][class*="filled_"],
+button[class*="button_"][class*="brand_"],
+button[class*="button_"][class*="primary_"],
+button[class*="button_"][class*="lookFilled_"]:not([class*="colorGreen_"]):not([class*="colorGrey_"]),
+[class*="micTest_"] button,
+[class*="voiceButtons_"] button,
+[class*="actionButtons_"] button,
+[class*="streamPreview_"] button,
+[class*="audioSettings_"] button {
+  background-color: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: #ffffff !important;
+}
+
+.vc-btn-primary:hover,
+button[class*="button_"][class*="filled_"]:hover,
+button[class*="button_"][class*="brand_"]:hover,
+button[class*="button_"][class*="primary_"]:hover,
+button[class*="button_"][class*="lookFilled_"]:not([class*="colorGreen_"]):not([class*="colorGrey_"]):hover,
+[class*="micTest_"] button:hover,
+[class*="voiceButtons_"] button:hover,
+[class*="actionButtons_"] button:hover,
+[class*="streamPreview_"] button:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
